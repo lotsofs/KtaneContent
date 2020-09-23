@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Odd One Out — Keep Talking and Nobody Explodes Module</title>
+    <meta name="viewport" content="initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/ktane-utils.js"></script>
+    <style>
+        @media print {
+            a[href]:after {
+                content: "";
+            }
+        }
+
+        @media print {
+            ul {
+                padding-left: 1em;
+                font-size: 11pt;
+            }
+            ul, td > p {
+                margin: .5em 0;
+            }
+        }
+
+        @media print, screen and (min-width: 900px) {
+            .appendix-1 {
+                float: right;
+            }
+        }
+        table {
+            border: none;
+        }
+        .corner {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Odd One Out</span>
+            </div>
+            <div class="page-content">
+                <img src="img/Component/Odd One Out.svg" class="diagram">
+                <h2>On the Subject of Odd One Out</h2>
+                <p class="flavour-text">One of these things is not like the others! One of these things just doesn’t belong!</p>
+
+                <p>
+                    There are six buttons on the module which may display a variety of things directly on the button or in the display whilst hovering over a button.
+                    Five of the buttons, referred to below as the “good buttons”, satisfy a specific property which is described in the table below.
+                    Press the button that doesn’t belong — the “odd one out” — to move on to the next stage. The current stage is indicated by LEDs at the top of the module.
+                </p>
+                <p>Once 5 stages have been completed, press the button that has had the correct answer a unique number of times to disarm the module.</p>
+                <p>You may long-press any button to reset the module back to stage 1.</p>
+
+                <table>
+                    <tr>
+                        <th>Display&nbsp;set</th>
+                        <th>Instructions</th>
+                    </tr>
+                    <tr>
+                        <th>Letters</th>
+                        <td>
+                            <p>Depending on the color of the LED to the right of the display:</p>
+                            <ul>
+                                <li><strong><em>Red LED:</em></strong> The good buttons form a sequence of letters with equal distance in the alphabet, wrapping around from Z back to A.</li>
+                                <li><strong><em>Yellow LED:</em></strong> The good buttons, when read in reading order, form a five-letter English word that is encoded using Atbash cipher. In this cipher, A↔Z, B↔Y, C↔X, etc.</li>
+                                <li><strong><em>Green LED:</em></strong> The good buttons, when read in reading order, form a five-letter English word that is encoded using ROT13. In this cipher, A↔N, B↔O, C↔P, etc.</li>
+                                <li><strong><em>Turquoise LED:</em></strong> The good buttons have letters whose <a href="Morse Code.html">Morse code</a> begins with the same two symbols.</li>
+                                <li><strong><em>Blue LED:</em></strong> The good buttons have letters whose <a href="Maritime Flags.html">international maritime signal flags</a> share a common color.</li>
+                                <li><strong><em>Purple LED:</em></strong> The good buttons have letters whose <a href="Semaphore.html">flag semaphores</a> share a common flag position.</li>
+                                <li><strong><em>Pink LED:</em></strong> The good buttons have letters whose <a href="Pigpen Rotations.html">Pigpen cipher</a> representations all have or don’t have a dot.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Numbers</th>
+                        <td>
+                            <p>Depending on the color of the LED to the right of the display:</p>
+                            <ul>
+                                <li><strong><em>Red LED:</em></strong> The good buttons show numbers with the same remainder after division by 4, 7, 9 or 11.</li>
+                                <li><strong><em>Yellow LED:</em></strong> The good buttons show numbers with the same number of lines or the same number of dots in <a href="Zoni.html">Zoni</a>.</li>
+                                <li><strong><em>Green LED:</em></strong> The good buttons either all show prime numbers, or all show composite numbers.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 1 of 4</div>
+        </div>
+        <div class="page page-bg-02">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes</span>
+                <span class="page-header-section-title">Odd One Out</span>
+            </div>
+            <div class="page-content">
+                <table>
+                    <tr>
+                        <th>Encoded letters</th>
+                        <td>
+                            <p>The buttons display letters using various encodings. The good buttons show <em>either</em> all the same letter, <em>or</em> a five-letter English word in reading order.</p>
+                            <p>
+                                Encodings used include <a href="Braille.html">Braille</a>, <a href="Lombax Cubes.html">Lombax</a>,
+                                <a href="Maritime Flags.html">international maritime signal flags</a>, <a href="Morse Code.html">Morse code</a>, <a href="Pigpen Rotations.html">pigpen cipher</a>,
+                                <a href="Semaphore.html">flag semaphore</a>, Standard Galactic Alphabet, <a href="Zoni.html">Zoni</a>, and numeric position (decimal or binary).
+                            </p>
+                            <p>The Standard Galactic Alphabet is as follows:</p>
+                            <table style="font-size:14pt;margin:0 auto;">
+                                <tr>
+                                    <th>A</th>
+                                    <th>B</th>
+                                    <th>C</th>
+                                    <th>D</th>
+                                    <th>E</th>
+                                    <th>F</th>
+                                    <th>G</th>
+                                    <th>H</th>
+                                    <th>I</th>
+                                    <th>J</th>
+                                    <th>K</th>
+                                    <th>L</th>
+                                    <th>M</th>
+                                </tr>
+                                <tr style="font-family:SGA;">
+                                    <td>A</td>
+                                    <td>B</td>
+                                    <td>C</td>
+                                    <td>D</td>
+                                    <td>E</td>
+                                    <td>F</td>
+                                    <td>G</td>
+                                    <td>H</td>
+                                    <td>I</td>
+                                    <td>J</td>
+                                    <td>K</td>
+                                    <td>L</td>
+                                    <td>M</td>
+                                </tr>
+                                <tr>
+                                    <th>N</th>
+                                    <th>O</th>
+                                    <th>P</th>
+                                    <th>Q</th>
+                                    <th>R</th>
+                                    <th>S</th>
+                                    <th>T</th>
+                                    <th>U</th>
+                                    <th>V</th>
+                                    <th>W</th>
+                                    <th>X</th>
+                                    <th>Y</th>
+                                    <th>Z</th>
+                                </tr>
+                                <tr style="font-family:SGA;">
+                                    <td>N</td>
+                                    <td>O</td>
+                                    <td>P</td>
+                                    <td>Q</td>
+                                    <td>R</td>
+                                    <td>S</td>
+                                    <td>T</td>
+                                    <td>U</td>
+                                    <td>V</td>
+                                    <td>W</td>
+                                    <td>X</td>
+                                    <td>Y</td>
+                                    <td>Z</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Letter codes</th>
+                        <td>
+                            <p>The good buttons show either:</p>
+                            <ul>
+                                <li>
+                                    one or two letters, first letter capitalized:<ul>
+                                        <li>chemical element symbols, with the sixth button not a valid chemical element symbol;</li>
+                                        <li>chemical element symbols from the same row or same column on the <a href="https://ptable.com">periodic table</a>, with the sixth button another valid chemical element symbol;</li>
+                                    </ul>
+                                </li>
+                                <li>two capital letters: <a href="USA Maze.html">US state abbreviations</a>;</li>
+                                <li>
+                                    three capital letters:<ul>
+                                        <li>ISO country codes from <a href="Flags.html">Flags</a>;</li>
+                                        <li>ISO currency codes from both <a href="Flags.html">Flags</a> and <a href="Foreign Exchange Rates optimized (Timwi).html">Foreign&nbsp;Exchange&nbsp;Rates</a>; or</li>
+                                        <li>codes from <a href="Morse War.html">Morse&nbsp;War</a>.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Words</th>
+                        <td>
+                            The words on the good buttons are from the same module. Possible modules are: <a href='Anagrams embellished (Timwi).html'>Anagrams</a>, <a href="Braille.html">Braille</a>,
+                            <a href='Codenames.html'>Codenames</a>, <a href='Double Expert.html'>Double Expert</a>, <a href="Extended Password.html">Extended&nbsp;Password</a>, <a href='Not Wiresword.html'>Not Wiresword</a>, <a href="Password.html">Password</a>, <a href="Poetry.html">Poetry</a>, <a href="Tap Code.html">Tap&nbsp;Code</a>,
+                            <a href='Topsy Turvy.html'>Topsy Turvy</a>, <a href='Word Scramble embellished (Timwi).html'>Word&nbsp;Scramble</a> and <a href="Word Search.html">Word&nbsp;Search</a>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Given names</th>
+                        <td>
+                            The names on the good buttons are from the same module. Possible modules are: <a href='Boxing.html'>Boxing</a>, <a href="Guess Who.html">Guess Who?</a>, <a href='Human Resources.html'>Human Resources</a>, <a href="Ice Cream.html">Ice Cream</a>,
+                            <a href="Identity Parade.html">Identity Parade</a>, <a href="Mafia.html">Mafia</a>, <a href="Naughty or Nice.html">Naughty or Nice</a>, <a href='Raiding Temples.html'>Raiding Temples</a>, <a href="Retirement.html">Retirement</a>, <a href="Schlag den Bomb.html">Schlag den Bomb</a>
+                            and <a href='Subways.html'>Subways</a>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><a href="https://en.wikipedia.org/wiki/Gallery_of_sovereign_state_flags">Country flags</a></th>
+                        <td>The good buttons display <em>either</em> countries whose name starts or ends with the same letter, <em>or</em> countries which do or do not contain the letter “E”.</td>
+                    </tr>
+                    <tr>
+                        <th>Musical notes</th>
+                        <td>The good buttons show the first 5 notes of a major scale (with sharp/flat equivalents potentially interchanged).</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 2 of 4</div>
+        </div>
+        <div class="page page-bg-03">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes</span>
+                <span class="page-header-section-title">Odd One Out</span>
+            </div>
+            <div class="page-content">
+                <table>
+                    <tr>
+                        <th>Colors with numbers</th>
+                        <td>
+                            <p>The good buttons show the following numbers corresponding to their colors, but with a consistent offset added:</p>
+                            <p><strong>0</strong> = black, <strong>1</strong> = blue, <strong>2</strong> = green, <strong>3</strong> = cyan/teal, <strong>4</strong> = red, <strong>5</strong> = magenta, <strong>6</strong> = yellow, <strong>7</strong> = white</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Colors with names</th>
+                        <td>
+                            <p>The buttons have colors and display the corresponding color name. The colors on the good buttons all have the same R, G, or B value in the following table:</p>
+                            <table style='width: 100%; border: none'>
+                                <tr>
+                                    <th class='corner'></th>
+                                    <th>Name</th>
+                                    <th>R</th>
+                                    <th>G</th>
+                                    <th>B</th>
+                                    <td rowspan='14' style='border: none'></td>
+                                    <th class='corner'></th>
+                                    <th>Name</th>
+                                    <th>R</th>
+                                    <th>G</th>
+                                    <th>B</th>
+                                </tr>
+                                <tr>
+                                    <td style="background:#00FFFF;"></td>
+                                    <td>Aqua</td>
+                                    <td>0</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td style="background:#880000;"></td>
+                                    <td>Maroon</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#0088FF;"></td>
+                                    <td>Azure</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td style="background:#88FF88;"></td>
+                                    <td>Mint</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#888888;"></td>
+                                    <td>Boulder</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td style="background:#000088;"></td>
+                                    <td>Navy</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#FF8800;"></td>
+                                    <td>Carrot</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td style="background:#888800;"></td>
+                                    <td>Olive</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#FFFFFF;"></td>
+                                    <td>Ceramic</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td style="background:#8888FF;"></td>
+                                    <td>Periwinkle</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#88FF00;"></td>
+                                    <td>Chartreuse</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td style="background:#FF0088;"></td>
+                                    <td>Rose</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#0000FF;"></td>
+                                    <td>Denim</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>2</td>
+                                    <td style="background:#FF8888;"></td>
+                                    <td>Salmon</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#FFFF88;"></td>
+                                    <td>Dolly</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                    <td style="background:#FF0000;"></td>
+                                    <td>Scarlet</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#880088;"></td>
+                                    <td>Eggplant</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td style="background:#00FF88;"></td>
+                                    <td>Spring</td>
+                                    <td>0</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#FF00FF;"></td>
+                                    <td>Fuchsia</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td>2</td>
+                                    <td style="background:#000000;"></td>
+                                    <td>Swamp</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#00FF00;"></td>
+                                    <td>Harlequin</td>
+                                    <td>0</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                    <td style="background:#008888;"></td>
+                                    <td>Teal</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#FF88FF;"></td>
+                                    <td>Heliotrope</td>
+                                    <td>2</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td style="background:#88FFFF;"></td>
+                                    <td>Turquoise</td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#008800;"></td>
+                                    <td>Lawn</td>
+                                    <td>0</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td style="background:#8800FF;"></td>
+                                    <td>Violet</td>
+                                    <td>1</td>
+                                    <td>0</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td style="background:#FFFF00;"></td>
+                                    <td>Lemon</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                    <td>0</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><a href="3D Tunnels.html">3D Tunnels</a> symbols</th>
+                        <td>The symbols on the good buttons belong to the same plane in the <a href="3D Tunnels.html">3D&nbsp;Tunnels</a> diagram.</td>
+                    </tr>
+                    <tr>
+                        <th><a href="Benedict Cumberbatch.html">Benedict Cumberbatch</a><br>names</th>
+                        <td>The good buttons display a valid forename/surname combination from <a href="Benedict Cumberbatch.html">Benedict&nbsp;Cumberbatch</a>.</td>
+                    </tr>
+                    <tr>
+                        <th><a href="Dragon Energy.html">Dragon&nbsp;Energy</a> words</th>
+                        <td>The good buttons show words from the same row or same column in the <a href="Dragon Energy.html">Dragon Energy</a> manual.</td>
+                    </tr>
+                    <tr>
+                        <th>Diseases from <a href='Dr. Doctor.html'>Dr.&nbsp;Doctor</a></th>
+                        <td>The good buttons display diseases that share a symptom.</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 3 of 4</div>
+        </div>
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes</span>
+                <span class="page-header-section-title">Odd One Out</span>
+            </div>
+            <div class="page-content">
+                <table style='margin-bottom: 1cm'>
+                    <colgroup><col style='width: 2cm'><col></colgroup>
+                    <tr>
+                        <th>Symbols from <a href='Friendship.html'>Friendship</a></th>
+                        <td>The good buttons display friendship symbols from the same edge of the diagram in the <a href='Friendship.html'>Friendship</a> manual.</td>
+                    </tr>
+                    <tr>
+                        <th>Grocery items</th>
+                        <td>The good buttons display items that are <em>all</em> in <a href="Cheap Checkout.html">Cheap&nbsp;Checkout</a>, <a href="Grocery Store.html">Grocery&nbsp;Store</a>, or <a href="Ingredients.html">Ingredients</a>. </td>
+                    </tr>
+                    <tr>
+                        <th>Words from <a href='IKEA.html'>IKEA</a></th>
+                        <td>The good buttons either all show brand names or all show product names.</td>
+                    </tr>
+                    <tr>
+                        <th>Names from <a href='Lion’s Share.html'>Lion’s&nbsp;Share</a></th>
+                        <td>The good buttons display names of lions that are alive in the same year.</td>
+                    </tr>
+                    <tr>
+                        <th><a href='The London Underground.html'>London&nbsp;Underground</a> stations</th>
+                        <td>The good buttons display stations on the same London Underground line.</td>
+                    </tr>
+                    <tr>
+                        <th><a href="Question Mark.html">Question Mark</a> images</th>
+                        <td>The good buttons show images from the same row in the <a href="Question Mark.html">Question Mark</a> manual.</td>
+                    </tr>
+                    <tr>
+                        <th>Words from <a href='Simon Speaks.html'>Simon&nbsp;Speaks</a></th>
+                        <td>The good buttons display words in the same column or the same row in the table in the <a href='Simon Speaks.html'>Simon Speaks</a> manual.</td>
+                    </tr>
+                    <tr>
+                        <th><a href="Zoo.html">Zoo</a> animals</th>
+                        <td>The animals on the good buttons form a line in the <a href="Zoo.html">Zoo</a> manual.</td>
+                    </tr>
+                </table>
+                <div class='appendix-1'>
+                    <h3>Major scales (first five notes)</h3>
+                    <ul>
+                        <li>C, D, E, F, G</li>
+                        <li>C♯/D♭, D♯/E♭, F, F♯/G♭, G♯/A♭</li>
+                        <li>D, E, F♯/G♭, G, A</li>
+                        <li>D♯/E♭, F, G, G♯/A♭, A♯/B♭</li>
+                        <li>E, F♯/G♭, G♯/A♭, A, B</li>
+                        <li>F, G, A, A♯/B♭, C</li>
+                        <li>F♯/G♭, G♯/A♭, A♯/B♭, B, C♯/D♭</li>
+                        <li>G, A, B, C, D</li>
+                        <li>G♯/A♭, A♯/B♭, C, C♯/D♭, D♯/E♭</li>
+                        <li>A, B, C♯/D♭, D, E</li>
+                        <li>A♯/B♭, C, D, D♯/E♭, F</li>
+                        <li>B, C♯/D♭, D♯/E♭, E, F♯/G♭</li>
+                    </ul>
+                </div>
+                <div class='appendix-2'>
+                    <h3>Binary conversion</h3>
+                    <table>
+                        <tr><td>1</td><td>00001</td> <td>14</td><td>01110</td></tr>
+                        <tr><td>2</td><td>00010</td> <td>15</td><td>01111</td></tr>
+                        <tr><td>3</td><td>00011</td> <td>16</td><td>10000</td></tr>
+                        <tr><td>4</td><td>00100</td> <td>17</td><td>10001</td></tr>
+                        <tr><td>5</td><td>00101</td> <td>18</td><td>10010</td></tr>
+                        <tr><td>6</td><td>00110</td> <td>19</td><td>10011</td></tr>
+                        <tr><td>7</td><td>00111</td> <td>20</td><td>10100</td></tr>
+                        <tr><td>8</td><td>01000</td> <td>21</td><td>10101</td></tr>
+                        <tr><td>9</td><td>01001</td> <td>22</td><td>10110</td></tr>
+                        <tr><td>10</td><td>01010</td><td>23</td><td>10111</td></tr>
+                        <tr><td>11</td><td>01011</td><td>24</td><td>11000</td></tr>
+                        <tr><td>12</td><td>01100</td><td>25</td><td>11001</td></tr>
+                        <tr><td>13</td><td>01101</td><td>26</td><td>11010</td></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="page-footer relative-footer">Page 4 of 4</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,3301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Connected Monitors — Keep Talking and Nobody Explodes Module</title>
+    <meta name="viewport" content="initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/ktane-utils.js"></script>
+    <style>
+        table#t01{
+            width: 100%;
+        }
+        table#t01 td{
+            text-align: center;
+        }
+        td#t01{
+            width: 20%;
+        }
+        td#t02 {
+            width: 16.6%;
+        }
+
+        th#t04 {
+            width: 16.6%;
+            background-color: black;
+            color: white;
+        }
+
+        table#t01 th#t03 {
+            background-color: black;
+            color: white;
+        }
+
+        th#t05{
+            border-left-width: 2px;
+        }
+
+        td#t06 {
+            border-right-width: 2px;
+        }
+
+        th#t07 {
+            border-left-width: 2px;
+            border-bottom-width: 2px;
+        }
+
+        td#t08 {
+            border-right-width: 2px;
+            border-bottom-width:2px;
+        }
+
+        th#t09 {
+            border-right-width: 2px;
+            border-bottom-width: 2px;
+            border-top-width:2px;
+            border-left-width:2px;
+        }
+        
+        th#t10{
+            border-right-width:2px;
+            border-bottom-width:2px;
+        }
+
+        th#t11{
+            border-right-width:2px;
+        }
+
+        th#t12{
+            border-bottom-width:2px;
+        }
+
+        th#t13{
+            border-bottom-width:2px;
+            border-right-width:2px;
+        }
+
+        td#t14{
+            padding-bottom: 0px;  
+            padding-left: 0px;  
+            padding-top: 0px;  
+            padding-right: 0px;  
+        }
+        table {
+            margin: 1em auto;
+            border: none;
+            text-align: center;
+        }
+
+        .left {
+            border-left-style: hidden;
+        }
+
+        .right {
+            border-right-style: hidden;
+        }
+
+        .top {
+            border-top-style: hidden;
+        }
+
+        .btm {
+            border-bottom-style: hidden;
+        }
+
+        .tr {
+            border-top-style: hidden;
+            border-right-style: hidden;
+        }
+
+        .tl {
+            border-top-style: hidden;
+            border-left-style: hidden;
+        }
+
+        .bl {
+            border-bottom-style: hidden;
+            border-left-style: hidden;
+        }
+
+        .br {
+            border-bottom-style: hidden;
+            border-right-style: hidden;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var EWvalues = [
+                ["<code>-1</code>", "<code>+3<code>"],
+                ["<code>+1</code>", "<code>-1<code>"],
+                ["<code>+3</code>", "<code>-3<code>"],
+                ["<code>+2</code>", "<code>+1<code>"],
+                ["<code>-2</code>", "<code>+2<code>"],
+                ["<code>-3</code>", "<code>-2<code>"],
+                ["<code>--</code>", "<code>--<code>"]
+                ];
+            var SENWvalues = [
+                ["<code>-3</code>", "<code>-3<code>"],
+                ["<code>+1</code>", "<code>-2<code>"],
+                ["<code>-1</code>", "<code>+1<code>"],
+                ["<code>+3</code>", "<code>-1<code>"],
+                ["<code>-2</code>", "<code>+2<code>"],
+                ["<code>+2</code>", "<code>+3<code>"],
+                ["<code>--</code>", "<code>--<code>"]
+            ];
+            var SWNEvalues = [
+                ["<code>+3</code>", "<code>+3<code>"],
+                ["<code>-2</code>", "<code>-1<code>"],
+                ["<code>+2</code>", "<code>+1<code>"],
+                ["<code>-3</code>", "<code>+2<code>"],
+                ["<code>+1</code>", "<code>-3<code>"],
+                ["<code>-1</code>", "<code>-2<code>"],
+                ["<code>--</code>", "<code>--<code>"]
+            ];
+            var SNvalues = [
+                ["<code>+3</code>", "<code>-3<code>"],
+                ["<code>+1</code>", "<code>+2<code>"],
+                ["<code>+2</code>", "<code>-2<code>"],
+                ["<code>-1</code>", "<code>+3<code>"],
+                ["<code>-2</code>", "<code>-1<code>"],
+                ["<code>-3</code>", "<code>+1<code>"],
+                ["<code>--</code>", "<code>--<code>"]
+            ];
+            document.querySelector(".WE1").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W1").innerHTML = value[0];
+                document.querySelector(".E1").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W1").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E1").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W1").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E1").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W1").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E1").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W1").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E1").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W1").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E1").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W1").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E1").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".WE2").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W2").innerHTML = value[0];
+                document.querySelector(".E2").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W2").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E2").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W2").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E2").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W2").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E2").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W2").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E2").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W2").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E2").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W2").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E2").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".WE3").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W3").innerHTML = value[0];
+                document.querySelector(".E3").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W3").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E3").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W3").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E3").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W3").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E3").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W3").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E3").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W3").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E3").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W3").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E3").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".WE4").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W4").innerHTML = value[0];
+                document.querySelector(".E4").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W4").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E4").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W4").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E4").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W4").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E4").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W4").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E4").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W4").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E4").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W4").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E4").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".WE5").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W5").innerHTML = value[0];
+                document.querySelector(".E5").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W5").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E5").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W5").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E5").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W5").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E5").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W5").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E5").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W5").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E5").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W5").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E5").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".WE6").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W6").innerHTML = value[0];
+                document.querySelector(".E6").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W6").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E6").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W6").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E6").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W6").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E6").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W6").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E6").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W6").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E6").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W6").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E6").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".WE7").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W7").innerHTML = value[0];
+                document.querySelector(".E7").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W7").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E7").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W7").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E7").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W7").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E7").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W7").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E7").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W7").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E7").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W7").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E7").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".WE8").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W8").innerHTML = value[0];
+                document.querySelector(".E8").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W8").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E8").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W8").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E8").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W8").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E8").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W8").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E8").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W8").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E8").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W8").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E8").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".WE9").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W9").innerHTML = value[0];
+                document.querySelector(".E9").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W9").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E9").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W9").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E9").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W9").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E9").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W9").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E9").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W9").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E9").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W9").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E9").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".WE10").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W10").innerHTML = value[0];
+                document.querySelector(".E10").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W10").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E10").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W10").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E10").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W10").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E10").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W10").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E10").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W10").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E10").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W10").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E10").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".WE11").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = EWvalues[Number(s.value) - 1];
+                document.querySelector(".W11").innerHTML = value[0];
+                document.querySelector(".E11").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".W11").style.backgroundColor = "#ff8080";
+                        document.querySelector(".E11").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".W11").style.backgroundColor = "#80ff80";
+                        document.querySelector(".E11").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".W11").style.backgroundColor = "#0080ff";
+                        document.querySelector(".E11").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".W11").style.backgroundColor = "#8080ff";
+                        document.querySelector(".E11").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".W11").style.backgroundColor = "#ff8000";
+                        document.querySelector(".E11").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".W11").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".E11").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS1").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N1").innerHTML = value[0];
+                document.querySelector(".S1").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N1").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S1").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N1").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S1").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N1").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S1").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N1").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S1").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N1").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S1").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N1").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S1").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS2").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N2").innerHTML = value[0];
+                document.querySelector(".S2").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N2").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S2").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N2").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S2").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N2").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S2").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N2").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S2").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N2").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S2").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N2").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S2").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS3").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N3").innerHTML = value[0];
+                document.querySelector(".S3").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N3").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S3").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N3").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S3").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N3").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S3").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N3").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S3").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N3").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S3").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N3").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S3").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS4").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N4").innerHTML = value[0];
+                document.querySelector(".S4").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N4").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S4").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N4").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S4").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N4").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S4").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N4").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S4").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N4").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S4").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N4").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S4").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS5").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N5").innerHTML = value[0];
+                document.querySelector(".S5").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N5").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S5").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N5").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S5").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N5").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S5").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N5").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S5").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N5").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S5").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N5").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S5").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS6").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N6").innerHTML = value[0];
+                document.querySelector(".S6").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N6").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S6").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N6").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S6").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N6").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S6").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N6").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S6").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N6").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S6").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N6").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S6").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS7").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N7").innerHTML = value[0];
+                document.querySelector(".S7").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N7").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S7").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N7").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S7").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N7").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S7").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N7").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S7").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N7").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S7").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N7").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S7").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS8").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N8").innerHTML = value[0];
+                document.querySelector(".S8").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N8").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S8").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N8").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S8").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N8").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S8").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N8").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S8").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N8").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S8").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N8").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S8").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS9").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N9").innerHTML = value[0];
+                document.querySelector(".S9").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N9").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S9").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N9").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S9").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N9").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S9").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N9").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S9").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N9").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S9").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N9").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S9").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS10").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N10").innerHTML = value[0];
+                document.querySelector(".S10").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N10").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S10").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N10").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S10").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N10").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S10").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N10").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S10").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N10").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S10").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N10").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S10").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NS11").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SNvalues[Number(s.value) - 1];
+                document.querySelector(".N11").innerHTML = value[0];
+                document.querySelector(".S11").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".N11").style.backgroundColor = "#ff8080";
+                        document.querySelector(".S11").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".N11").style.backgroundColor = "#80ff80";
+                        document.querySelector(".S11").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".N11").style.backgroundColor = "#0080ff";
+                        document.querySelector(".S11").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".N11").style.backgroundColor = "#8080ff";
+                        document.querySelector(".S11").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".N11").style.backgroundColor = "#ff8000";
+                        document.querySelector(".S11").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".N11").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".S11").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NWSE1").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SENWvalues[Number(s.value) - 1];
+                document.querySelector(".NW1").innerHTML = value[0];
+                document.querySelector(".SE1").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NW1").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SE1").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NW1").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SE1").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NW1").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SE1").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NW1").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SE1").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NW1").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SE1").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NW1").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SE1").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NWSE2").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SENWvalues[Number(s.value) - 1];
+                document.querySelector(".NW2").innerHTML = value[0];
+                document.querySelector(".SE2").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NW2").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SE2").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NW2").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SE2").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NW2").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SE2").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NW2").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SE2").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NW2").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SE2").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NW2").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SE2").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NWSE3").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SENWvalues[Number(s.value) - 1];
+                document.querySelector(".NW3").innerHTML = value[0];
+                document.querySelector(".SE3").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NW3").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SE3").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NW3").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SE3").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NW3").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SE3").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NW3").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SE3").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NW3").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SE3").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NW3").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SE3").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NWSE4").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SENWvalues[Number(s.value) - 1];
+                document.querySelector(".NW4").innerHTML = value[0];
+                document.querySelector(".SE4").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NW4").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SE4").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NW4").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SE4").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NW4").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SE4").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NW4").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SE4").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NW4").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SE4").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NW4").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SE4").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NWSE5").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SENWvalues[Number(s.value) - 1];
+                document.querySelector(".NW5").innerHTML = value[0];
+                document.querySelector(".SE5").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NW5").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SE5").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NW5").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SE5").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NW5").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SE5").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NW5").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SE5").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NW5").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SE5").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NW5").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SE5").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NWSE6").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SENWvalues[Number(s.value) - 1];
+                document.querySelector(".NW6").innerHTML = value[0];
+                document.querySelector(".SE6").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NW6").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SE6").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NW6").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SE6").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NW6").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SE6").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NW6").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SE6").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NW6").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SE6").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NW6").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SE6").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NWSE7").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SENWvalues[Number(s.value) - 1];
+                document.querySelector(".NW7").innerHTML = value[0];
+                document.querySelector(".SE7").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NW7").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SE7").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NW7").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SE7").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NW7").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SE7").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NW7").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SE7").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NW7").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SE7").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NW7").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SE7").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NWSE8").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SENWvalues[Number(s.value) - 1];
+                document.querySelector(".NW8").innerHTML = value[0];
+                document.querySelector(".SE8").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NW8").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SE8").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NW8").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SE8").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NW8").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SE8").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NW8").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SE8").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NW8").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SE8").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NW8").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SE8").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NWSE9").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SENWvalues[Number(s.value) - 1];
+                document.querySelector(".NW9").innerHTML = value[0];
+                document.querySelector(".SE9").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NW9").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SE9").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NW9").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SE9").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NW9").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SE9").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NW9").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SE9").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NW9").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SE9").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NW9").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SE9").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NESW1").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SWNEvalues[Number(s.value) - 1];
+                document.querySelector(".NE1").innerHTML = value[0];
+                document.querySelector(".SW1").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NE1").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SW1").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NE1").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SW1").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NE1").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SW1").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NE1").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SW1").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NE1").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SW1").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NE1").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SW1").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NESW2").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SWNEvalues[Number(s.value) - 1];
+                document.querySelector(".NE2").innerHTML = value[0];
+                document.querySelector(".SW2").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NE2").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SW2").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NE2").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SW2").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NE2").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SW2").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NE2").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SW2").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NE2").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SW2").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NE2").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SW2").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NESW4").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SWNEvalues[Number(s.value) - 1];
+                document.querySelector(".NE4").innerHTML = value[0];
+                document.querySelector(".SW4").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NE4").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SW4").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NE4").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SW4").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NE4").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SW4").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NE4").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SW4").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NE4").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SW4").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NE4").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SW4").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NESW5").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SWNEvalues[Number(s.value) - 1];
+                document.querySelector(".NE5").innerHTML = value[0];
+                document.querySelector(".SW5").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NE5").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SW5").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NE5").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SW5").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NE5").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SW5").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NE5").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SW5").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NE5").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SW5").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NE5").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SW5").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NESW6").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SWNEvalues[Number(s.value) - 1];
+                document.querySelector(".NE6").innerHTML = value[0];
+                document.querySelector(".SW6").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NE6").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SW6").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NE6").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SW6").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NE6").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SW6").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NE6").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SW6").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NE6").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SW6").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NE6").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SW6").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NESW7").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SWNEvalues[Number(s.value) - 1];
+                document.querySelector(".NE7").innerHTML = value[0];
+                document.querySelector(".SW7").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NE7").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SW7").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NE7").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SW7").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NE7").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SW7").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NE7").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SW7").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NE7").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SW7").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NE7").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SW7").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NESW8").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SWNEvalues[Number(s.value) - 1];
+                document.querySelector(".NE8").innerHTML = value[0];
+                document.querySelector(".SW8").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NE8").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SW8").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NE8").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SW8").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NE8").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SW8").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NE8").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SW8").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NE8").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SW8").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NE8").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SW8").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+            document.querySelector(".NESW9").onchange = function (e) {
+                var s = e.currentTarget;
+                var value = SWNEvalues[Number(s.value) - 1];
+                document.querySelector(".NE9").innerHTML = value[0];
+                document.querySelector(".SW9").innerHTML = value[1];
+                switch (Number(s.value) - 1) {
+                    case 0:
+                        document.querySelector(".NE9").style.backgroundColor = "#ff8080";
+                        document.querySelector(".SW9").style.backgroundColor = "#ff8080";
+                        break;
+                    case 1:
+                        document.querySelector(".NE9").style.backgroundColor = "#80ff80";
+                        document.querySelector(".SW9").style.backgroundColor = "#80ff80";
+                        break;
+                    case 2:
+                        document.querySelector(".NE9").style.backgroundColor = "#0080ff";
+                        document.querySelector(".SW9").style.backgroundColor = "#0080ff";
+                        break;
+                    case 3:
+                        document.querySelector(".NE9").style.backgroundColor = "#8080ff";
+                        document.querySelector(".SW9").style.backgroundColor = "#8080ff";
+                        break;
+                    case 4:
+                        document.querySelector(".NE9").style.backgroundColor = "#ff8000";
+                        document.querySelector(".SW9").style.backgroundColor = "#ff8000";
+                        break;
+                    case 5:
+                        document.querySelector(".NE9").style.backgroundColor = "rgb(250, 247, 228)";
+                        document.querySelector(".SW9").style.backgroundColor = "rgb(250, 247, 228)";
+                        break;
+                };
+            };
+        }
+    </script>
+</head>
+<body>
+    <div class="section">
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Connected Monitors</span>
+            </div>
+            <div class="page-content">
+                <img src="img/Component/Connected Monitors.svg" class="diagram">
+                <h2>On the Subject of Connected Monitors</h2>
+                <p class="flavour-text">Monitors, monitors, give me connected monitors.</p>
+
+                <ul>
+                    <li>
+                        This module contains 15 touch-screen monitors. Each one is connected to the surrounding monitors via wires. These wires cannot be cut.
+                    </li>
+                    <li>
+                        Each monitor...
+                        <ul>
+                            <li>
+                                ...can be one of five colors: red, orange, green, blue, or purple.
+                            </li>
+                            <li>
+                                ...has a screen that displays a one or two-digit number. The same number can’t appear on multiple displays.
+                            </li>
+                            <li>
+                                ...contains anywhere from zero to three indicator lights. Each individual indicator light can be one of six colors: red, orange, green, blue, purple, or white.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Each individual wire can be one of six colors: red, orange, green, blue, purple, or white.
+                    </li>
+                    <li>
+                        Each monitor will be given a score based on the previously mentioned details. Determine each monitor’s score and touch the screens of all the monitors with positive(including 0) scores in a specific order.
+                    </li>
+                    <li>
+                        When a correct screen is pressed, it will display a check mark, and it can no longer be interacted with.
+                        <ul>
+                            <li>
+                                We will use the term “checked-off” to define that a monitor has been pressed correctly, displaying a check mark on it’s screen, from this point forward.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        If an incorrect monitor is pressed, then the numbers on all non-checked-off monitors will change.
+                    </li>
+                    <li>
+                        If none of the monitors have a positive score, check-off the monitor with the highest then lowest score.
+                    </li>
+                    <li>
+                        If a monitor’s screen is tinted green instead of blue, the number on the screen will change when a monitor it is connected to is checked-off, but only on the first occurrence (the screen will switch to the normal blue tint after the change). Only a maximum of 3 can appear.
+                    </li>
+                    <li class="appendix-reference">
+                        See appendix ConMonEx for examples on how to complete each section.
+                    </li>
+                </ul>
+
+            </div>
+            <div class="page-footer relative-footer">Page 1 of 9</div>
+        </div>
+        <div class="page page-bg-02">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Connected Monitors</span>
+            </div>
+            <div class="page-content">
+
+                <h3>
+                    Section 1: Monitor Color (Starting Score)
+                </h3>
+                <ul>
+                    <li>
+                        The monitor’s color will determine the starting score.
+                    </li>
+                    <li>
+                        This will be the base for all future calculations.
+                    </li>
+                </ul>
+                <table id="t01">
+                    <tr>
+                        <th id="t03">
+                            Red
+                        </th>
+                        <th id="t03">
+                            Orange
+                        </th>
+                        <th id="t03">
+                            Green
+                        </th>
+                        <th id="t03">
+                            Blue
+                        </th>
+                        <th id="t03">
+                            Purple
+                        </th>
+                    </tr>
+                    <tr>
+                        <td id="t01">
+                             +2
+                        </td>
+                        <td id="t01">
+                             +1
+                        </td>
+                        <td id="t01">
+                             0
+                        </td>
+                        <td id="t01">
+                             -1
+                        </td>
+                        <td id="t01">
+                             -2
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>
+                    Section 2: Numbers
+                </h3>
+                <ul>
+                    <li>
+                        Add or subtract values to the current score based on if the number on the monitor satisfies specific conditions.
+                    </li>
+                    <li>
+                        Multiple conditions in a single row may apply.
+                    </li>
+                    <li>
+                        If a number is only one digit<strong>, pretend the first digit is a 0.</strong>
+                    </li>
+                    <li>
+                        Variable a represents the first digit, and variable b represents the second digit.
+                    </li>
+                </ul>
+
+                <table id="t01">
+                    <tr>
+                        <th id="t03">
+                            +3
+                        </th>
+                        <th id="t03">
+                            +2
+                        </th>
+                        <th id="t03">
+                            +1
+                        </th>
+                        <th id="t03">
+                            -1
+                        </th>
+                        <th id="t03">
+                            -2
+                        </th>
+                        <th id="t03">
+                            -3
+                        </th>
+                    </tr>
+                    <tr>
+                        <td id="t02">
+                            Divisible by 7
+                        </td>
+                        <td id="t02">
+                            Last digit is a 7
+                        </td>
+                        <td id="t02">
+                            b - a < 0
+                        </td>
+                        <td id="t02">
+                            First digit is 2
+                        </td>
+                        <td id="t02">
+                            Divisible by 6
+                        </td>
+                        <td id="t02">
+                            a + 1 = b
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="t02">
+                            a + b > 10
+                        </td>
+                        <td id="t02">
+                            Divisible by 9
+                        </td>
+                        <td id="t02">
+                            Prime
+                        </td>
+                        <td id="t02">
+                            a is prime
+                        </td>
+                        <td id="t02">
+                            Last digit is 8
+                        </td>
+                        <td id="t02">
+                            Divisible by 10
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="t02">
+                            Last digit is 0
+                        </td>
+                        <td id="t02">
+                            First digit is 5
+                        </td>
+                        <td id="t02">
+                            Last digit is 4
+                        </td>
+                        <td id="t02">
+                            Last digit is 6
+                        </td>
+                        <td id="t02">
+                            First digit is 3 
+                        </td>
+                        <td id="t02">
+                            b is prime
+                        </td>
+                    </tr>
+                </table>
+
+                <h3>
+                    Section 3: Number of Indicator Lights
+                </h3>
+                <ul>
+                    <li>
+                        Determine the number of indicator lights on that monitor.
+                    </li>
+                    <li>
+                        If the number on the display is even, add the value.
+                    </li>
+                    <li>
+                        If the number on the display is odd, subtract the value.
+                    </li>
+                    <li>
+                        If there are no indicator lights on that monitor, you can skip sections 3 and 4 (for that monitor exclusively).
+                    </li>
+                </ul>
+            </div>
+            <div class="page-footer relative-footer">Page 2 of 9</div>
+        </div>
+        <div class="page page-bg-03">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Connected Monitors</span>
+            </div>
+            <div class="page-content">
+                <h3>
+                    Section 4: Color of Indicator Lights
+                </h3>
+                <ul>
+                    <li>
+                        Add or subtract values to the current score based off of the color of the indicator lights.
+                    </li>
+                    <li>
+                        Lights are positioned in reading order.
+                    </li>
+                    <li>
+                        Lights contribute to the score via position, the value labeled in <span style="color: red">red</span>  (the light’s position in the set of indicators on the monitor), and color occurrence, the value labeled in <span style="color: blue">blue</span> (the nth time that light’s color has appeared in the set of indicators on that monitor).
+                    </li>
+                </ul>
+                <table id="t01">
+                    <tr>
+                        <th colspan="2" id="t04">
+                            Red
+                        </th>
+                        <th colspan="2" id="t04">
+                            Orange
+                        </th>
+                        <th colspan="2" id="t04">
+                            Green
+                        </th>
+                        <th colspan="2" id="t04">
+                            Blue
+                        </th>
+                        <th colspan="2" id="t04">
+                            Purple
+                        </th>
+                        <th colspan="2" id="t04">
+                            White
+                        </th>
+                    </tr>
+                    <tr>
+                        <th rowspan="2" id="t05">1st</th>
+                        <td id="t06" style="color: red">+1</td>
+                        <th rowspan="2" id="t05">1st</th>
+                        <td id="t06" style="color: red">-2</td>
+                        <th rowspan="2" id="t05">1st</th>
+                        <td id="t06" style="color: red">-3</td>
+                        <th rowspan="2" id="t05">1st</th>
+                        <td id="t06" style="color: red">+3</td>
+                        <th rowspan="2" id="t05">1st</th>
+                        <td id="t06" style="color: red">+1</td>
+                        <th rowspan="2" id="t05">1st</th>
+                        <td id="t06" style="color: red">-1</td>
+                    </tr>
+                    <tr>
+                        <td id="t06" style="color: blue">+2</td>
+                        <td id="t06" style="color: blue">-3</td>
+                        <td id="t06" style="color: blue">-1</td>
+                        <td id="t06" style="color: blue">+2</td>
+                        <td id="t06" style="color: blue">-2</td>
+                        <td id="t06" style="color: blue">-3</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2" id="t05">2nd</th>
+                        <td id="t06" style="color: red">-3</td>
+                        <th rowspan="2" id="t05">2nd</th>
+                        <td id="t06" style="color: red">+2</td>
+                        <th rowspan="2" id="t05">2nd</th>
+                        <td id="t06" style="color: red">+1</td>
+                        <th rowspan="2" id="t05">2nd</th>
+                        <td id="t06" style="color: red">-1</td>
+                        <th rowspan="2" id="t05">2nd</th>
+                        <td id="t06" style="color: red">-2</td>
+                        <th rowspan="2" id="t05">2nd</th>
+                        <td id="t06" style="color: red">+2</td>
+                    </tr>
+                    <tr>
+                        <td id="t06" style="color: blue">-1</td>
+                        <td id="t06" style="color: blue">-2</td>
+                        <td id="t06" style="color: blue">+3</td>
+                        <td id="t06" style="color: blue">+2</td>
+                        <td id="t06" style="color: blue">+1</td>
+                        <td id="t06" style="color: blue">-1</td>
+                    </tr>
+                    <tr>
+                        <th rowspan="2" id="t07">3rd</th>
+                        <td id="t06" style="color: red">+3</td>
+                        <th rowspan="2" id="t07">3rd</th>
+                        <td id="t06" style="color: red">+2</td>
+                        <th rowspan="2" id="t07">3rd</th>
+                        <td id="t06" style="color: red">+2</td>
+                        <th rowspan="2" id="t07">3rd</th>
+                        <td id="t06" style="color: red">-1</td>
+                        <th rowspan="2" id="t07">3rd</th>
+                        <td id="t06" style="color: red">-3</td>
+                        <th rowspan="2" id="t07">3rd</th>
+                        <td id="t06" style="color: red">+3</td>
+                    </tr>
+                    <tr>
+                        <td id="t08" style="color: blue">+3</td>
+                        <td id="t08" style="color: blue">+1</td>
+                        <td id="t08" style="color: blue">+3</td>
+                        <td id="t08" style="color: blue">+1</td>
+                        <td id="t08" style="color: blue">-2</td>
+                        <td id="t08" style="color: blue">+3</td>
+                    </tr>
+                </table>
+                <ul>
+                    <li>
+                        If the light is blinking, use this table to determine the value based on its position.
+                    </li>
+                </ul>
+                <table id="t01">
+                    <tr>
+                        <th colspan="2" id="t04">
+                            Red
+                        </th>
+                        <th colspan="2" id="t04">
+                            Orange
+                        </th>
+                        <th colspan="2" id="t04">
+                            Green
+                        </th>
+                        <th colspan="2" id="t04">
+                            Blue
+                        </th>
+                        <th colspan="2" id="t04">
+                            Purple
+                        </th>
+                        <th colspan="2" id="t04">
+                            White
+                        </th>
+                    </tr>
+                    <tr>
+                        <th id="t05">1st</th>
+                        <td id="t06">+2</td>
+                        <th id="t05">1st</th>
+                        <td id="t06">+4</td>
+                        <th id="t05">1st</th>
+                        <td id="t06">-6</td>
+                        <th id="t05">1st</th>
+                        <td id="t06">-4</td>
+                        <th id="t05">1st</th>
+                        <td id="t06">+6</td>
+                        <th id="t05">1st</th>
+                        <td id="t06">+4</td>
+                    </tr>
+                    <tr>
+                        <th id="t05">2nd</th>
+                        <td id="t06">-6</td>
+                        <th id="t05">2nd</th>
+                        <td id="t06">-2</td>
+                        <th id="t05">2nd</th>
+                        <td id="t06">+6</td>
+                        <th id="t05">2nd</th>
+                        <td id="t06">-4</td>
+                        <th id="t05">2nd</th>
+                        <td id="t06">-2</td>
+                        <th id="t05">2nd</th>
+                        <td id="t06">+2</td>
+                    </tr>
+                    <tr>
+                        <th id="t07">3rd</th>
+                        <td id="t08">-2</td>
+                        <th id="t07">3rd</th>
+                        <td id="t08">+6</td>
+                        <th id="t07">3rd</th>
+                        <td id="t08">-6</td>
+                        <th id="t07">3rd</th>
+                        <td id="t08">+4</td>
+                        <th id="t07">3rd</th>
+                        <td id="t08">+2</td>
+                        <th id="t07">3rd</th>
+                        <td id="t08">-4</td>
+                    </tr>
+                </table>
+                <h3>Section 5: Connections</h3>
+                <ul>
+                    <li>
+                        Add or subtract values to the current score based on the colors of the wires connecting the monitor to the surrounding ones.
+                    </li>
+                    <li>
+                        The center square is for reference, and each box surrounding it represents the wire in that respective compass direction.
+                    </li>
+                </ul>
+
+            </div>
+            <div class="page-footer relative-footer">Page 3 of 9</div>
+        </div>
+        <div class="page page-bg-04">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Connected Monitors</span>
+            </div>
+            <div class="page-content">
+                <ul>
+                    <li>
+                        Each wire’s value is amplified by how many connected wires are that specific color (for example, if there are <strong>3</strong> blue wires and the determined values of those 3 blue wires are <strong>[1, 2, 3]</strong>, then the applied values would be <strong>[3, 6, 9].</strong> This applies for every color).
+                    </li>
+                    <li>
+                        Apply these values to the current score to determine that monitor’s overall score.
+                    </li>
+                </ul>
+                <table style="font-size: 11px;white-space:nowrap;margin-left: -20px;">
+                    <tr>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>1</sub></th>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="tl"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>2</sub></th>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="tl"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>3</sub></th>
+                    </tr>
+                    <tr>
+                        <td style="height:8px"></td>
+                        <td class="W1"><code>--</code></td>
+                        <td>
+                            <select class="WE1">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E1"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="W2"><code>--</code></td>
+                        <td>
+                            <select class="WE2">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E2"><code>--</code></td>
+                        <td style="height:8px"></td>
+                    </tr>
+                    <tr>
+                        <td class="right"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="left"></td>
+                        <td class="right"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="left"></td>
+                    </tr>
+                    <tr>
+                        <td class="bl"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+
+                    </tr>
+                    <tr>
+                        <td class="tl"></td>
+                        <td class="N1"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td class="btm"></td>
+                        <td class="NW1"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="NE1"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="N2"><code>--</code></td>
+                        <td class="btm"></td>
+                        <td class="bl"></td>
+                        <td class="NW2"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="NE2"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="N3"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="NW3"><code>--</code></td>
+                    </tr>
+                    <tr>
+                        <td class="tl"></td>
+                        <td>
+                            <select class="NS1">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="tr"></td>
+                        <td class="btm"></td>
+                        <td colspan="3">
+                            <select class="NWSE1">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                            <select class="NESW1">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td>
+                            <select class="NS2">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="btm"></td>
+                        <td class="bl"></td>
+                        <td colspan="3">
+                            <select class="NWSE2">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                            <select class="NESW2">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td>
+                            <select class="NS3">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="bl"></td>
+                        <td>
+                            <select class="NWSE3">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tl"></td>
+                        <td class="S1"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="SW1"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="SE1"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="S2"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="SW2"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="SE2"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="S3"><code>--</code></td>
+                        <td class="right"></td>
+                        <td class="top"></td>
+                        <td class="bl"></td>
+                        <td class="bl"></td>
+                        <td class="SE3"><code>--</code></td>
+                    </tr>
+                    <tr>
+                        <td class="tl"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>4</sub></th>
+                        <td class="right"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="left"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>5</sub></th>
+                        <td class="right"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="left"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>6</sub></th>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="left"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>7</sub></th>
+                    </tr>
+                    <tr>
+                        <td style="height:8px"></td>
+                        <td class="W3"><code>--</code></td>
+                        <td>
+                            <select class="WE3">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E3"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="W4"><code>--</code></td>
+                        <td>
+                            <select class="WE4">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E4"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="W5"><code>--</code></td>
+                        <td>
+                            <select class="WE5">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E5"><code>--</code></td>
+                    </tr>
+                    <tr>
+                        <td class="right"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="left"></td>
+                        <td class="right"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="left"></td>
+                        <td class="right"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="left"></td>
+
+                    </tr>
+                    <tr>
+                        <td class="bl"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="br"></td>
+                    </tr>
+                    <tr>
+                        <td class="tl"></td>
+                        <td class="N4"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td class="btm"></td>
+                        <td class="NW4"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="NE4"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="N5"><code>--</code></td>
+                        <td class="btm"></td>
+                        <td class="bl"></td>
+                        <td class="NW5"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="NE5"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="N6"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="NW6"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="NE6"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="N7"><code>--</code></td>
+
+                    </tr>
+                    <tr>
+                        <td class="tl"></td>
+                        <td>
+                            <select class="NS4">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="tr"></td>
+                        <td class="btm"></td>
+                        <td colspan="3">
+                            <select class="NWSE4">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                            <select class="NESW4">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td>
+                            <select class="NS5">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="btm"></td>
+                        <td class="bl"></td>
+                        <td colspan="3">
+                            <select class="NWSE5">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                            <select class="NESW5">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td>
+                            <select class="NS6">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td colspan="3">
+                            <select class="NWSE6">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                            <select class="NESW6">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td>
+                            <select class="NS7">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="tl"></td>
+                        <td class="S4"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="SW4"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="SE4"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="S5"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="SW5"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="SE5"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="S6"><code>--</code></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td class="SW6"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="SE6"><code>--</code></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td class="S7"><code>--</code></td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="tl"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="tr"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>8</sub></th>
+                        <td class="right"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="left"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>9</sub></th>
+                        <td class="right"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="left"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>10</sub></th>
+                        <td class="right"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="left"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>11</sub></th>
+                    </tr>
+                    <tr>
+                        <td style="height:8px"></td>
+                        <td class="W6"><code>--</code></td>
+                        <td>
+                            <select class="WE6">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E6"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="W7"><code>--</code></td>
+                        <td>
+                            <select class="WE7">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E7"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="W8"><code>--</code></td>
+                        <td>
+                            <select class="WE8">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E8"><code>--</code></td>
+                    </tr>
+                    <tr>
+                        <td class="right"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="left"></td>
+                        <td class="right"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="left"></td>
+                        <td class="right"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="left"></td>
+
+                    </tr>
+                    <tr>
+                        <td class="bl"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="btm"></td>
+                        <td style="height:8px"></td>
+                        <td class="br"></td>
+                    </tr>
+
+                    <tr>
+                        <td class="tl"></td>
+                        <td class="N8"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td class="btm"></td>
+                        <td class="NW7"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="NE7"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="N9"><code>--</code></td>
+                        <td class="btm"></td>
+                        <td class="bl"></td>
+                        <td class="NW8"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="NE8"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="N10"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="NW9"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="NE9"><code>--</code></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="N11"><code>--</code></td>
+
+                    </tr>
+                    <tr>
+                        <td class="tl"></td>
+                        <td>
+                            <select class="NS8">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="tr"></td>
+                        <td class="btm"></td>
+                        <td colspan="3">
+                            <select class="NWSE7">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                            <select class="NESW7">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td>
+                            <select class="NS9">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="btm"></td>
+                        <td class="bl"></td>
+                        <td colspan="3">
+                            <select class="NWSE8">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                            <select class="NESW8">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td>
+                            <select class="NS10">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td colspan="3">
+                            <select class="NWSE9">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                            <select class="NESW9">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td>
+                            <select class="NS11">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="tl"></td>
+                        <td class="S8"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="SW7"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="SE7"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="S9"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="SW8"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="SE8"><code>--</code></td>
+                        <td class="tr"></td>
+                        <td style="height:8px"></td>
+                        <td class="S10"><code>--</code></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td class="SW9"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td class="SE9"><code>--</code></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td class="S11"><code>--</code></td>
+
+                    </tr>
+
+                    <tr>
+                        <td class="tl"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="right"></td>
+                        <td class="right"></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="top"></td>
+                        <td style="height:8px"></td>
+                        <td class="tr"></td>
+                    </tr>
+                    <tr>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>12</sub></th>
+                        <td class="right"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="left"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>13</sub></th>
+                        <td class="right"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="left"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>14</sub></th>
+                        <td class="right"></td>
+                        <td class="tr"></td>
+                        <td class="tr"></td>
+                        <td class="top"></td>
+                        <td class="left"></td>
+                        <th colspan="3" rowspan="3" style="font-size: 18px;">M<sub>15</sub></th>
+                    </tr>
+                    <tr>
+                        <td style="height:8px"></td>
+                        <td class="W9"></td>
+                        <td>
+                            <select class="WE9">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E9"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="W10"><code>--</code></td>
+                        <td>
+                            <select class="WE10">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E10"><code>--</code></td>
+                        <td style="height:8px"></td>
+                        <td style="height:8px"></td>
+                        <td class="W11"><code>--</code></td>
+                        <td>
+                            <select class="WE11">
+                                <option value="7">--</option>
+                                <option value="1">R</option>
+                                <option value="2">G</option>
+                                <option value="3">B</option>
+                                <option value="4">P</option>
+                                <option value="5">O</option>
+                                <option value="6">W</option>
+                            </select>
+                        </td>
+                        <td class="E11"><code>--</code></td>
+                    </tr>
+                    <tr>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="bl"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="bl"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="br"></td>
+                        <td class="btm"></td>
+                        <td class="bl"></td>
+
+                    </tr>
+                </table>
+
+
+            </div>
+            <div class="page-footer relative-footer">Page 4 of 9</div>
+        </div>
+        <div class="page page-bg-05">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Connected Monitors</span>
+            </div>
+            <div class="page-content">
+                <h3>
+                    Section 6: Pressing Order
+                </h3>
+                <ul>
+                    <li>
+                        Any monitor with a negative score must not be pressed under any circumstance, unless every monitor has a negative score (instructions on first page).
+                    </li>
+                    <li>
+                        Based on the color of the monitor in the bottom left corner, determine the pressing order for all monitors with positive scores.
+                    </li>
+                    <li>
+                        Remember that the numbers on monitors with green screens will change if a monitor connected to it is checked-off (only on the first occurrence), which has a chance of affecting the outcomes of sections 2, 3 and 6.
+                        <ul>
+                            <li>
+                                If a monitor’s number changes and it, in turn, makes the monitor’s score positive, start again from the beginning of the Pressing Order.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        If two or more monitors have the same key, press the monitors in descending order based on the monitors score.
+                        <ul>
+                            <li>
+                                If two or more monitors have the same key and score, press the monitors in descending order based on the monitors index in reading order.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Key:</strong>
+                        <ul>
+                            <li>
+                                Re = Red Monitor
+                            </li>
+                            <li>
+                                Or = Orange Monitor
+                            </li>
+                            <li>
+                                Gr = Green Monitor
+                            </li>
+                            <li>
+                                Bl = Blue Monitor
+                            </li>
+                            <li>
+                                Pu = Purple Monitor
+                            </li>
+                        </ul>
+                        <br />
+                        <ul>
+                            <li>
+                                Ev = Score is Even
+                            </li>
+                            <li>
+                                Od = Score is Odd
+                            </li>
+                        </ul>
+                        <br />
+                    </li>
+                    <li>
+                        Red:
+                        <ul>
+                            <li>
+                                PuOd, GrOd, OrEv, BlEv, PuEv, GrEv, ReOd, ReEv, OrOd, BlOd.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Orange:
+                        <ul>
+                            <li>
+                                PuEv, GrEv, ReEv, OrEv, GrOd, PuOd, OrOd, BlOd, BlEv, ReOd.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Green:
+                        <ul>
+                            <li>
+                                BlOd, GrEv, ReEv, ReOd, BlEv, OrEv, OrOd, PuOd, GrOd, PuEv.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Blue:
+                        <ul>
+                            <li>
+                                ReEv, ReOd, PuOd, OrEv, OrOd, GrOd, BlEv, PuEv, GrEv, BlOd.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Purple:
+                        <ul>
+                            <li>
+                                PuEv, GrOd, PuOd, BlEv, GrEv, ReEv, ReOd, BlOd, OrOd, OrEv.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+            </div>
+            <div class="page-footer relative-footer">Page 5 of 9</div>
+        </div>
+        <div class="page page-bg-06">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Appendix ConMonEx</span>
+            </div>
+            <div class="page-content">
+                <h2>
+                    Appendix ConMonEx: Connected Monitors Examples
+                </h2>
+                <h3>
+                    Section 1: Monitor Color (Starting Score)
+                </h3>
+                <ul>
+                    <li>
+                        I really shouldn’t have to explain this one.
+                    </li>
+                </ul>
+                <h3>
+                    Section 2: Numbers
+                </h3>
+                <ul>
+                    <li>
+                        Run through each condition to see if the number would apply to each of the 15 conditions.
+                    </li>
+                    <li>
+                        Let’s say the number on a monitor’s screen is 26. The following conditions would apply:
+                        <ul>
+                            <li>
+                                First digit is 2
+                            </li>
+                            <li>
+                                a is prime
+                            </li>
+                            <li>
+                                Last digit is 6
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        If a condition applies, apply the value at the top of that column to the current score.
+                        <ul>
+                            <li>
+                                First digit is 2 <strong>(-1)</strong>
+                            </li>
+                            <li>
+                                a is prime <strong>(-1)</strong>
+                            </li>
+                            <li>
+                                Last Digit is 6 <strong> (-1)</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        When put together, the total value that would be applied to the current score would be <strong>-3</strong>.
+                    </li>
+                    <li>
+                        Let’s say the number on a monitor’s screen is 5. Since the number is only one digit, it would be interpreted as “05”. The following conditions would apply:
+                        <ul>
+                            <li>
+                                Prime
+                            </li>
+                            <li>
+                                b is prime
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        If a condition applies, apply the value at the top of that column to the current score.
+                        <ul>
+                            <li>
+                                Prime <strong>(+1)</strong>
+                            </li>
+                            <li>
+                                b is prime <strong>(-3)</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        When put together, the total value that would be applied to the current score would be -2.
+                    </li>
+                </ul>
+            </div>
+            <div class="page-footer relative-footer">Page 6 of 9</div>
+        </div>
+        <div class="page page-bg-07">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Appendix ConMonEx</span>
+            </div>
+            <div class="page-content">
+                <h3>
+                    Section 3: Number of Indicator Lights
+                </h3>
+                <ul>
+                    <li>
+                        I shouldn’t have to explain this one either...
+                    </li>
+                </ul>
+                <h3>
+                    Section 4: Color of Indicator Lights
+                </h3>
+                <ul>
+                    <li>
+                        Let’s assume that there are 3 indicator lights (note that there can be less than 3) on the monitor in the following order:
+                        <ul>
+                            <li>
+                                <strong>Orange, Green, Orange (Blinking)</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Let’s start with the first light.
+                        <ul>
+                            <li>
+                                Since the light is orange, in the first position, and not blinking, apply the red value for the [Orange 1st] square on the first table. <strong style="color: red">(-2) </strong>
+                            </li>
+                            <li>
+                                Since this is the first occurrence of a light being orange on that monitor, apply the blue value for the [Orange 1st] square on the first table. <strong style="color: blue">(-3)</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Now onto the second light.
+                        <ul>
+                            <li>
+                                Since the light is green, in the second position, and not blinking, apply the red value for the [Green 2nd] square on the first table. <strong style="color: red">(+1) </strong>
+                            </li>
+                            <li>
+                                Since this is the first occurrence of a light being green on that monitor, apply the blue value for the [Green 1st] square on the first table. <strong style="color: blue">(-1)</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        Now onto the last light.
+                        <ul>
+                            <li>
+                                Since the light is blinking, we will have to check the second table.
+                            </li>
+                            <li>
+                                Since the light is orange and in the third position, apply the value for the [Orange 3rd] square on the second table. <strong>(+6)</strong>
+                            </li>
+                            <li>
+                                Since this is the second occurrence of a light being orange on that monitor, apply the blue value for the [Orange 2nd] square on the first table. <strong style="color: blue">(-2)</strong>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        After combining all of the obtained values (-2, -3, +1, -1, +6, -2), that will be the overall score that needs to be applied to the current score, which in this case is <strong>-1</strong>.
+                    </li>
+                </ul>
+            </div>
+            <div class="page-footer relative-footer">Page 7 of 9</div>
+        </div>
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Appendix ConMonEx</span>
+            </div>
+            <div class="page-content">
+                <h3>
+                    Section 5: Connections
+                </h3>
+                <ul>
+                    <li>
+                        Let’s say that the colors of the wires surrounding the monitor look like this.
+                    </li>
+                </ul>
+                <table style="margin-left: auto; margin-right: auto; width: 125px; height: 125px;">
+                    <tr>
+                        <td style="background-color: limegreen; margin-left: auto; margin-right: auto; padding: 0px; width: 33%; height: 33%;" id="t14">
+                            
+                        </td>
+                        <td id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            
+                        </td>
+                        <td id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            N/A
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            
+                        </td>
+                        <td  id="t14" style="background-color: black; color: white; padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            <strong>XX</strong>
+                        </td>
+                        <td style="background-color: rebeccapurple; padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;" id="t14">
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            
+                        </td>
+                        <td style="background-color: deepskyblue; padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;" id="t14">
+                            
+                        </td>
+                        <td style="background-color: red; padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;" id="t14">
+                            
+                        </td>
+                    </tr>
+                </table>
+                <ul>
+                    <li>
+                        Each of the 8 boxes surrounding the monitor diagram on the table in Section 5 represent the compass direction that the wire branches out in.
+                    </li>
+                    <li>
+                        So, since the wire in the northwest corner is green, we would go to the northwest square, find the value located next to green, and apply that to the total. Do this for all wires.
+                    </li>
+                    <li>
+                        After all wires have been checked, these are the totals.
+                    </li>
+                </ul>
+                <table style="margin-left: auto; margin-right: auto; width: 125px; height: 125px;">
+                    <tr>
+                        <td id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            -2
+                        </td>
+                        <td id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            <strong>+1</strong>
+                        </td>
+                        <td id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            N/A
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            <strong>-2</strong>
+                        </td>
+                        <td  id="t14" style="background-color: black; color: white; padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            <strong>XX</strong>
+                        </td>
+                        <td  id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            +2
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  id="t14" id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            <strong>-1</strong>
+                        </td>
+                        <td  id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            +2
+                        </td>
+                        <td  id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            -3
+                        </td>
+                    </tr>
+                </table>
+                <ul>
+                    <li>
+                        However, each wire’s value is multiplied by how many wires of that color are connected to the monitor.
+                        <ul>
+                            <li>
+                                Since there’s only 1 green, blue, red, and purple wire each, the values of those wires are unchanged.
+                            </li>
+                            <li>
+                                But since there are 3 white wires connected to the monitor, the values of those 3 wires are multiplied by 3, making the north wire <strong>+3</strong>, the west wire <strong>-6</strong>, and the southwest wire <strong>-3</strong>.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        So overall, these are the values. Which totals to <strong>-7</strong>.
+                    </li>
+                </ul>
+                <table style="margin-left: auto; margin-right: auto; width: 125px; height: 125px;">
+                    <tr>
+                        <td id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            -2
+                        </td>
+                        <td id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            +3
+                        </td>
+                        <td id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            N/A
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            -6
+                        </td>
+                        <td  id="t14" style="background-color: black; color: white; padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            <strong>XX</strong>
+                        </td>
+                        <td  id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            +2
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  id="t14" id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            -3
+                        </td>
+                        <td  id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            +2
+                        </td>
+                        <td  id="t14" style="padding: 0px; margin-left: auto; margin-right: auto; width: 33%; height: 33%;">
+                            -3
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="page-footer relative-footer">Page 8 of 9</div>
+        </div>
+        <div class="page page-bg-02">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Appendix ConMonEx</span>
+            </div>
+            <div class="page-content">
+                <h3>Section 6: Pressing Order</h3>
+                <ul>
+                    <li>
+                        I think the only two things that need clarifying are the blue vs. green tint rule, and the restart sequence rule.
+                    </li>
+                    <br>
+                    <li>
+                        <em>Blue vs. Green Tint Rule:</em>
+                    </li>
+                </ul>
+                <p style="text-align: center;">If a monitor with a blue tint is connected to a monitor with a green tint...</p>
+                <img src="img/Connected Monitors/connecteddisplaysbluevsgreen.png" style="display: block; margin-left: auto; margin-right:auto; width: 40%;"/>
+                <p style="text-align: center;">...and the monitor with the blue tint is checked-off…</p>
+                <img src="img/Connected Monitors/connecteddisplaysbluevsblue.png" style="display: block; margin-left: auto; margin-right: auto; width: 40%;">
+                <p style="text-align: center;">...that will trigger the green-tinted monitor. The number on the screen of the monitor with the green tint will change, and the screen’s tint will switch to blue (meaning it won’t change again).</p>
+                <ul>
+                    <li>
+                        <em>Restart Sequence Rule:</em>
+                    </li>
+                    <br>
+                    <li>
+                        If a monitor with a green tint is triggered, and the new number on its screen causes the total score to become positive, start over from the beginning of the Pressing Order after the change.
+                    </li>
+                    <li>
+                        This has a higher chance of not having any effect if you’re near the beginning of the pressing order, but we’ll put it this way:
+                        <ul>
+                            <li>
+                              Say you’ve determined that the Pressing Order is the Blue set. You’ve just completed the fourth type (Orange w/ even numbers). But after checking off that display, a red monitor with a green tint triggers, causing its score to become positive. It’s score is now even. Red monitors with even numbers are first in the pressing order. You will have to go back and check off that monitor before continuing with the rest of the order.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="page-footer relative-footer">Page 9 of 9</div>
+        </div>
+    </div>
+</body>
+</html>

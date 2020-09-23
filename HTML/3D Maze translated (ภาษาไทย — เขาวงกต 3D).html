@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>เขาวงกต 3D — Keep Talking and Nobody Explodes Module</title>
+    <meta content="initial-scale=1" name="viewport">
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src='js/ktane-utils.js'></script>
+    <style>
+        .heading {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .mazes-table {
+            border: none;
+            width: 100%;
+        }
+            .mazes-table td {
+                padding-bottom: 2em;
+                border: none;
+            }
+
+        div.tmaze-outer {
+            border: .7mm solid black;
+            padding: .7mm;
+            line-height: 0;
+            display: inline-block;
+        }
+
+        svg.tmaze {
+            border: .7mm solid black;
+            padding: 2mm 3mm 3mm 2mm;
+            width: 60mm;
+        }
+
+        svg.tmaze line {
+            stroke: #000;
+            stroke-width: .3px;
+            stroke-linecap: square;
+        }
+
+        svg.tmaze text.cell {
+            font-size: 14pt;
+            font-weight: bold;
+            text-anchor: middle;
+        }
+
+        svg.tmaze text.x-label {
+            font-size: 9pt;
+            text-anchor: middle;
+        }
+
+        svg.tmaze text.y-label {
+            font-size: 9pt;
+            text-anchor: end;
+        }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <div class="page page-bg-02">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">เขาวงกต 3D</span>
+            </div>
+            <div class="page-content">
+                <img class="diagram" src="img/Component/3D Maze.svg">
+                <h2>ในหัวข้อ "เขาวงกต 3D"</h2>
+
+                <p class="flavour-text">ตอนนี้คุณกำลังอยู่ในเขาวงกตที่คดเคี้ยว เหมือนกับอันก่อนๆ ส่วนทางออกก็อยู่ทางทิศเหนือ, ใต้, ตะวันออก, และตะวันตก</p><ul>
+
+<li>ผู้กู้จะเริ่มต้นในตำแหน่งและการหันหน้าแบบสุ่มในเขาวงกดหนึ่งในสิบแบบที่ปรากฎด้านล่าง</li>
+<li>ระบุตำแหน่งของผู้กู้โดยใช้ภาพสามมิติของเขาวงกต นอกจากนั้นที่พื้นจะปรากฎสัญลักษณ์ของตำแหน่งที่ยืนอยู่ หรืออาจปรากฎสัญลักษณ์ของตำแหน่งที่อยู่ด้านหน้า</li>
+<li>เขาวงกตนี้วนรอบ หากเดินผ่านขอบ ผู้กู้ก็จะไปปรากฎอยู่ที่ตำแหน่งฝั่งตรงข้าม และเป็นการบ่งบอกว่าไม่มีกำแพงขวางอยู่</li>
+<li>หนึ่งในกำแพงทั้งหมดจะเป็นทางออก แต่ที่เหลือจะทำให้เกิด strike ถ้าหากเดินเข้าไป</li>
+<li>หาตำแหน่งของกำแพงทางออกให้เจอ และเดินทะลุเข้าไปจากด้านใดด้านหนึ่งเพื่อที่จะปลดโมดูลนี้</li>
+<li>ใช้วิธีการด้านล่างเพื่อคำนวณแถว (0-7), คอลัมน์ (0-7) และทิศทาง กำแพงทางออกจะเป็นกำแพงแรกจากพิกัดในทิศทางที่หามาได้</li></ul>
+
+                <p class="heading">แถว:</p><ul>
+<li>เริ่มต้นจากตัวเลขตัวแรกสุดใน serial number</li>
+<li>บวก 1 เพิ่มสำหรับแต่ละอินดิเคเตอร์ที่ไม่ติดไฟที่มีตัวอักษรใน <strong>“<span id='row-phrase'>MAZE GAMER</span>”</strong>
+<li>ถ้าหากเลขแถวมากกว่า 7 ให้ลบออกด้วย 8</li></ul>
+
+                <p class="heading">คอลัมน์:</p><ul>
+<li>เริ่มต้นจากตัวเลขตัวสุดท้ายใน serial number</li>
+<li>บวก 1 เพิ่มสำหรับแต่ละอินดิเคเตอร์ที่ติดไฟที่มีตัวอักษรใน <strong>“<span id='col-phrase'>HELP IM LOST</span>”</strong>
+<li>ถ้าหากเลขคอลัมน์มากกว่า 7 ให้ลบออกด้วย 8</li></ul>
+
+                <p class="heading">ทิศทาง:</p><ul>
+
+<li>แต่ละเขาวงกตจะมีเครื่องหมายดอกจันทร์กำหนดอยู่บนแผนที่ 3 ตำแหน่ง</li>
+<li>บนพื้นของตำแหน่งที่กำหนดนั้นจะมีตัวอักษรที่จะนำไปสู่ทางออก : “N” หมายถึง ทิศเหนือ, “S” หมายถึง ทิศใต้, “E” หมายถึง ทิศตะวันออก และ “W” หมายถึง ทิศตะวันตก</li>
+<li>โปรดระวังตัวอักษรที่ไม่ได้กำหนดไว้บนแผนที่ เพราะตัวอักษรเหล่านั้นเป็นตัวบอกทิศทางที่ไม่ถูกต้อง</li></ul>
+            </div>
+            <div class="page-footer relative-footer">หน้าที่ 1 จาก 3</div>
+        </div>
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">เขาวงกต 3D</span>
+            </div>
+            <div class="page-content">
+
+<!-- ##[## -->
+<table class='mazes-table'>
+<tr><td class='tmaze-td'><div class='tmaze-outer'></div></td><td class='tmaze-td'><div class='tmaze-outer'></div></td></tr>
+<tr><td class='tmaze-td'><div class='tmaze-outer'></div></td><td class='tmaze-td'><div class='tmaze-outer'></div></td></tr>
+<tr><td class='tmaze-td'><div class='tmaze-outer'></div></td><td class='tmaze-td'><div class='tmaze-outer'></div></td></tr>
+</table>
+<!-- ##]## -->
+            </div>
+            <div class="page-footer relative-footer">หน้าที่ 2 จาก 3</div>
+        </div>
+        <div class="page page-bg-03">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">เขาวงกต 3D</span>
+            </div>
+            <div class="page-content">
+<!-- ###[### -->
+<table class='mazes-table'>
+<tr><td class='tmaze-td'><div class='tmaze-outer'></div></td><td class='tmaze-td'><div class='tmaze-outer'></div></td></tr>
+<tr><td class='tmaze-td'><div class='tmaze-outer'></div></td><td class='tmaze-td'><div class='tmaze-outer'></div></td></tr>
+</table>
+<!-- ###]### -->
+            </div>
+            <div class="page-footer relative-footer">หน้าที่ 3 จาก 3</div>
+        </div>
+    </div>
+</body>
+</html>
